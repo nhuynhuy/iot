@@ -242,6 +242,7 @@ let verifyEmail =(inputId,inputToken) =>{
         }
     })
 }
+
 let getValueSensor =(type,value)=>{
     return new Promise(async(resolve,reject)=>{
         try {
@@ -254,7 +255,8 @@ let getValueSensor =(type,value)=>{
             }
             if(type==='month'){
                 values = await db.valueSensor.findAll({
-                    where: Sequelize.where(Sequelize.fn("month", Sequelize.col("date")), value)
+                    where: Sequelize.where(Sequelize.fn("MONTH", Sequelize.col("date")), value),
+                    order: ['date'],
                  });
             }
             resolve({
