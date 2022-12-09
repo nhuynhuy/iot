@@ -254,7 +254,7 @@ let getValueSensor =(type,value)=>{
             }
             if(type==='month'){
                 values = await db.valueSensor.findAll({
-                    where: Sequelize.where(Sequelize.fn("month", Sequelize.col("date")), 11)
+                    where: Sequelize.where(Sequelize.fn("month", Sequelize.col("date")), value)
                  });
             }
             resolve({
